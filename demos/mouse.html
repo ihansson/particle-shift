@@ -1,0 +1,59 @@
+<head>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<script src="../dist/library.min.js"></script>
+<script>
+
+const scene = Scene.create({
+	selector: '#canvas',
+	particle_size: 2,
+	step_width: 6,
+	draw_width: 500,
+	draw_height: 300
+})
+
+let mousepos = {x:0, y:0}
+
+document.getElementById('canvas').addEventListener('mousemove', function(e){
+	mousepos = {x: e.clientX, y: e.clientY}
+})
+
+const sphere = Body.create({
+	x: 500,
+	y: 300,
+	radius: 50,
+	force: -0.75,
+	update: function(scene, ctx){
+		this.x = ((mousepos.x / scene.draw_multiplier) * scene.canvas.width / scene.canvas.clientWidth)
+		this.y = ((mousepos.y / scene.draw_multiplier) * scene.canvas.width / scene.canvas.clientWidth)
+	},
+	draw: function(scene, ctx){
+
+	}
+})
+
+const screen1 = Screen.create(scene, {
+	bodies: [sphere],
+	render: function(scene, ctx){
+		ctx.font = '170px Georgia'
+		ctx.fillStyle = 'black';
+		ctx.fillText('Hello', 25, 200)
+	}
+})
+
+const screen2 = Screen.create(scene, {
+	bodies: [sphere],
+	render: function(scene, ctx){
+		ctx.fillText('There', 25, 200)
+	}
+})
+
+scene.play_screen(screen1);
+
+window.setTimeout(function(){
+	scene.play_screen(screen2)
+},2000)
+
+</script>
+</body>

@@ -1,0 +1,14 @@
+{
+  "name": "particle-text",
+  "version": "0.0.1",
+  "description": "",
+  "main": "src/library.js",
+  "scripts": {},
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "webpack-cli": "^4.1.0",
+    "webpack": "^5.2.0"
+  }
+}

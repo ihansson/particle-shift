@@ -1,0 +1,43 @@
+<head>
+	<style>
+		#canvas {
+			width: 100%;
+		}
+	</style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<script src="../dist/library.min.js"></script>
+<script>
+
+const scene = Scene.create({
+	selector: '#canvas',
+	particle_size: 3,
+	step_width: 7,
+	draw_width: 1000,
+	draw_height: 600,
+	show_fps: true
+})
+
+const screen1 = Screen.create(scene, {
+	render: function(scene, ctx){
+		ctx.font = '340px Georgia'
+		ctx.fillStyle = 'black';
+		ctx.fillText('Hello', 50, 400)
+	}
+})
+
+const screen2 = Screen.create(scene, {
+	render: function(scene, ctx){
+		ctx.fillText('There', 50, 400)
+	}
+})
+
+scene.play_screen(screen1);
+
+window.setTimeout(function(){
+	scene.play_screen(screen2)
+},2000)
+
+</script>
+</body>

@@ -1,0 +1,122 @@
+<head>
+	<link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap" rel="stylesheet">
+	<style>
+		body {
+			background: #000;
+		}
+	</style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<script src="../dist/library.min.js"></script>
+<script>
+
+const scene = Scene.create({
+	selector: '#canvas',
+	particle_size: 2,
+	step_width: 6,
+	draw_width: 750,
+	draw_height: 450,
+	show_fps: true
+})
+
+const wave1 = Body.create({
+	x: 0,
+	y: scene.draw_height * 0.4,
+	radius: 75,
+	force: -0.3,
+	going_right: true,
+	update: function(scene, ctx){
+		if(this.x > scene.draw_width || this.x < 0) this.going_right = !this.going_right 
+		this.x += this.going_right ? -4 : 4
+		this.y = (scene.draw_height * 0.4) + (Math.sin(scene.tick / 10) * 25)
+	},
+	draw: function(scene, ctx){
+
+	}
+})
+
+const wave2 = Body.create({
+	x: scene.draw_width,
+	y: scene.draw_height * 0.6,
+	radius: 75,
+	force: -0.3,
+	going_right: false,
+	update: function(scene, ctx){
+		if(this.x > scene.draw_width || this.x < 0) this.going_right = !this.going_right 
+		this.x += this.going_right ? -4 : 4
+		this.y = (scene.draw_height * 0.6) + (Math.sin(scene.tick / 10) * 25)
+	},
+	draw: function(scene, ctx){
+
+	}
+})
+
+let mousepos = {x:2000, y:2000}
+
+document.getElementById('canvas').addEventListener('mousemove', function(e){
+	mousepos = {x: e.clientX, y: e.clientY}
+})
+
+const mouseSphere = Body.create({
+	x: 2000,
+	y: 2000,
+	radius: 75,
+	force: 0.2,
+	update: function(scene, ctx){
+		this.x = ((mousepos.x / scene.draw_multiplier) * scene.canvas.width / scene.canvas.clientWidth)
+		this.y = ((mousepos.y / scene.draw_multiplier) * scene.canvas.width / scene.canvas.clientWidth)
+	},
+	draw: function(scene, ctx){
+
+	}
+})
+
+var f = new FontFace("LexendDeca", 'url(https://fonts.gstatic.com/s/lexenddeca/v3/K2F1fZFYk-dHSE0UPPuwQ5qnJy8.woff2)');
+
+f.load().then(function() {
+
+	const screen1 = Screen.create(scene, {
+		bodies: [wave1, wave2, mouseSphere],
+		render: function(scene, ctx){
+			ctx.font = '250px Lexend Deca'
+			var grd = ctx.createLinearGradient(0, 0, scene.draw_width, 0);
+			grd.addColorStop(0, "#5433FF");
+			grd.addColorStop(0.5, "#20BDFF");
+			grd.addColorStop(1, "#A5FECB");
+			ctx.fillStyle = grd;
+			ctx.fillText('Hello', 25, 300)
+		}
+	})
+
+	const screen2 = Screen.create(scene, {
+		bodies: [wave1, wave2, mouseSphere],
+		render: function(scene, ctx){
+			var grd = ctx.createLinearGradient(0, 0, scene.draw_width, 0);
+			grd.addColorStop(0, "#ee9ca7");
+			grd.addColorStop(1, "yellow");
+			ctx.fillStyle = grd;
+			ctx.fillText('There', 25, 300)
+		}
+	})
+
+	function play1(){
+		scene.play_screen(screen1);
+		window.setTimeout(function(){
+			play2()
+		},4000)
+	}
+
+	function play2(){
+		scene.play_screen(screen2);
+		window.setTimeout(function(){
+			play1()
+		},4000)
+	}
+
+	play1()
+
+});
+
+</script>
+</body>
