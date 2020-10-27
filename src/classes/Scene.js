@@ -36,7 +36,9 @@ export var Scene = {
 			show_fps: false,
 			tick: 0,
 			fps: 60,
-			lastFrameCall: 0,
+			last_frame_call: 0,
+			pre_render_frames_count: false,
+			pre_render_frames: [],
 
 			active: false,
 			current_screen: false,
@@ -70,8 +72,8 @@ export var Scene = {
 		this.current_screen = screen
 		this.setup_particles(screen)
 		this.resize()
-		if(!this.lastFrameCall){
-			this.lastFrameCall = performance.now()
+		if(!this.last_frame_call){
+			this.last_frame_call = performance.now()
 		}
 		if(!this.active){
 			this.active = true;
@@ -102,6 +104,10 @@ export var Scene = {
 			particle.draw(caller)
 		})
 
+		if(this.pre_render_frames_count){
+			this.pre_render()
+		}
+
 		if(this.show_fps){
 			this.draw_fps()
 		}
@@ -115,15 +121,32 @@ export var Scene = {
 	draw_fps: function(){
 		const now = performance.now()
 		if(this.tick % 20 == 0){
-			this.fps = Math.round(1 / ((now - this.lastFrameCall) / 1000));
+			this.fps = Math.round(1 / ((now - this.last_frame_call) / 1000));
 		}
-		this.lastFrameCall = now;
+		this.last_frame_call = now;
 
 		this.ctx.fillStyle = 'black';
 		this.ctx.fillRect(0,0,75,25)
 		this.ctx.font = '12px Courier'
 		this.ctx.fillStyle = 'white';
 		this.ctx.fillText('FPS:'+this.fps, 16, 15)
+	},
+
+	pre_render: function(){
+		this.pre_render_frames.push(
+			this.ctx.getImageData(0,0,this.draw_width,this.draw_height)
+		)
+		this.pre_render_frames_count--
+		if(this.pre_render_frames_count == 0){
+			const pre_render_node = document.createElement('canvas')
+			const pre_render_ctx = pre_render_node.getContext('2d')
+			pre_render_node.width = this.draw_width
+			pre_render_node.height = this.draw_height * this.pre_render_frames.length
+			this.pre_render_frames.forEach((frame, i) => {
+				pre_render_ctx.putImageData(frame, 0, i * this.draw_height)
+			})
+			document.body.appendChild(pre_render_node)
+		}
 	},
 
 	particles: [],

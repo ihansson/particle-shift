@@ -6,7 +6,7 @@ Under construction, check back in novemember for something production ready.
 
 - Go through method / prop names and make better
 - Write documentation
-- Prerender gif / video
+- Better timing mechanism (framerate independent)
 
 ## v2
 
@@ -14,3 +14,4 @@ Under construction, check back in novemember for something production ready.
 - Change particle data format to int arrays
 - Web workers?
 - Webgl?
+- Better recording

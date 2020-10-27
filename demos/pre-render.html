@@ -1,0 +1,51 @@
+<head>
+	<style>
+		body {
+			background: #000;
+		}
+	</style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<script src="../dist/library.min.js"></script>
+<script>
+
+const scene = Scene.create({
+	selector: '#canvas',
+	particle_size: 1,
+	step_width: 1,
+	draw_width: 500,
+	draw_height: 300,
+	show_fps: true,
+	pre_render_frames_count: 200
+})
+
+const screen1 = Screen.create(scene, {
+	render: function(scene, ctx){
+		ctx.font = '170px Georgia'
+		var grd = ctx.createLinearGradient(0, 0, scene.draw_width, 0);
+		grd.addColorStop(0, "yellow");
+		grd.addColorStop(1, "cyan");
+		ctx.fillStyle = grd;
+		ctx.fillText('Hello', 25, 200)
+	}
+})
+
+const screen2 = Screen.create(scene, {
+	render: function(scene, ctx){
+		var grd = ctx.createLinearGradient(0, 0, scene.draw_width, 0);
+		grd.addColorStop(0, "red");
+		grd.addColorStop(1, "#d4f473");
+		ctx.fillStyle = grd;
+		ctx.fillText('There', 25, 200)
+	}
+})
+
+scene.play_screen(screen1);
+
+window.setTimeout(function(){
+	scene.play_screen(screen2)
+},2000)
+
+</script>
+</body>
