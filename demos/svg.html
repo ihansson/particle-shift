@@ -18,10 +18,10 @@
 	 </g>
 	</svg>
 </div>
-<script src="../dist/library.min.js"></script>
+<script src="../dist/particle-shift.min.js"></script>
 <script>
 
-const scene = Scene.create({
+const scene = ParticleShift.Scene.create({
 	selector: '#canvas',
 
 	particle_size: 2,
@@ -46,7 +46,7 @@ img.onload = function() {
 
 	console.log('load')
 
-	const screen1 = Screen.create(scene, {
+	const screen1 = ParticleShift.Screen.create(scene, {
 		render: function(scene, ctx){
 			ctx.font = '200px Arial Black'
 			ctx.fillText('TO', 90, 200)
@@ -54,7 +54,7 @@ img.onload = function() {
 		}
 	})
 
-	const screen2 = Screen.create(scene, {
+	const screen2 = ParticleShift.Screen.create(scene, {
 		render: function(scene, ctx){
 			ctx.drawImage(img, 0, 0, scene.draw_width, scene.draw_height);
 		}

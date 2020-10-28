@@ -8,10 +8,10 @@
 </head>
 <body>
 <canvas id="canvas"></canvas>
-<script src="../dist/library.min.js"></script>
+<script src="../dist/particle-shift.min.js"></script>
 <script>
 
-const scene = Scene.create({
+const scene = ParticleShift.Scene.create({
 	selector: '#canvas',
 	particle_size: 2,
 	step_width: 6,
@@ -20,7 +20,7 @@ const scene = Scene.create({
 	show_fps: true
 })
 
-const wave1 = Body.create({
+const wave1 = ParticleShift.Body.create({
 	x: 0,
 	y: scene.draw_height * 0.4,
 	radius: 75,
@@ -36,7 +36,7 @@ const wave1 = Body.create({
 	}
 })
 
-const wave2 = Body.create({
+const wave2 = ParticleShift.Body.create({
 	x: scene.draw_width,
 	y: scene.draw_height * 0.6,
 	radius: 75,
@@ -58,7 +58,7 @@ document.getElementById('canvas').addEventListener('mousemove', function(e){
 	mousepos = {x: e.clientX, y: e.clientY}
 })
 
-const mouseSphere = Body.create({
+const mouseSphere = ParticleShift.Body.create({
 	x: 2000,
 	y: 2000,
 	radius: 75,
@@ -76,7 +76,7 @@ var f = new FontFace("LexendDeca", 'url(https://fonts.gstatic.com/s/lexenddeca/v
 
 f.load().then(function() {
 
-	const screen1 = Screen.create(scene, {
+	const screen1 = ParticleShift.Screen.create(scene, {
 		bodies: [wave1, wave2, mouseSphere],
 		render: function(scene, ctx){
 			ctx.font = '250px Lexend Deca'
@@ -89,7 +89,7 @@ f.load().then(function() {
 		}
 	})
 
-	const screen2 = Screen.create(scene, {
+	const screen2 = ParticleShift.Screen.create(scene, {
 		bodies: [wave1, wave2, mouseSphere],
 		render: function(scene, ctx){
 			var grd = ctx.createLinearGradient(0, 0, scene.draw_width, 0);

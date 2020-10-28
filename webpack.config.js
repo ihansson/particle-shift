@@ -1,10 +1,14 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/library.js',
+  entry: './src/index.js',
   mode: 'development',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'library.min.js'
+    filename: 'particle-shift.min.js',
+    library: 'ParticleShift',
+    libraryTarget: 'umd',
+    globalObject: 'this',
+    umdNamedDefine: true
   }
 };

@@ -7,10 +7,10 @@
 </head>
 <body>
 <canvas id="canvas"></canvas>
-<script src="../dist/library.min.js"></script>
+<script src="../dist/particle-shift.min.js"></script>
 <script>
 
-const scene = Scene.create({
+const scene = ParticleShift.Scene.create({
 	selector: '#canvas',
 	particle_size: 3,
 	step_width: 7,
@@ -19,7 +19,7 @@ const scene = Scene.create({
 	show_fps: true
 })
 
-const screen1 = Screen.create(scene, {
+const screen1 = ParticleShift.Screen.create(scene, {
 	render: function(scene, ctx){
 		ctx.font = '340px Georgia'
 		ctx.fillStyle = 'black';
@@ -27,7 +27,7 @@ const screen1 = Screen.create(scene, {
 	}
 })
 
-const screen2 = Screen.create(scene, {
+const screen2 = ParticleShift.Screen.create(scene, {
 	render: function(scene, ctx){
 		ctx.fillText('There', 50, 400)
 	}
