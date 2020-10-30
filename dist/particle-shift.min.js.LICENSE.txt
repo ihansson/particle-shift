@@ -1,0 +1,65 @@
+/*! ../utils.js */
+
+/*! ./Particle.js */
+
+/*! ./classes/Body.js */
+
+/*! ./classes/Scene.js */
+
+/*! ./classes/Screen.js */
+
+/*! export Body [provided] [maybe used in particle-shift, particle-shift.min (runtime-defined)] [usage prevents renaming] -> ./src/classes/Body.js .Body */
+
+/*! export Body [provided] [no usage info] [missing usage info prevents renaming] */
+
+/*! export Particle [provided] [no usage info] [missing usage info prevents renaming] */
+
+/*! export Scene [provided] [maybe used in particle-shift, particle-shift.min (runtime-defined)] [usage prevents renaming] -> ./src/classes/Scene.js .Scene */
+
+/*! export Scene [provided] [no usage info] [missing usage info prevents renaming] */
+
+/*! export Screen [provided] [maybe used in particle-shift, particle-shift.min (runtime-defined)] [usage prevents renaming] -> ./src/classes/Screen.js .Screen */
+
+/*! export Screen [provided] [no usage info] [missing usage info prevents renaming] */
+
+/*! export line_distance [provided] [no usage info] [missing usage info prevents renaming] */
+
+/*! export random [provided] [no usage info] [missing usage info prevents renaming] */
+
+/*! export shuffle [provided] [no usage info] [missing usage info prevents renaming] */
+
+/*! namespace exports */
+
+/*! other exports [not provided] [maybe used in particle-shift, particle-shift.min (runtime-defined)] */
+
+/*! other exports [not provided] [no usage info] */
+
+/*! runtime requirements: __webpack_require__, __webpack_exports__, __webpack_require__.d, __webpack_require__.r, __webpack_require__.* */
+
+/*! runtime requirements: __webpack_require__, __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
+
+/*! runtime requirements: __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
+
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+
+/*!**********************!*\
+  !*** ./src/utils.js ***!
+  \**********************/
+
+/*!*****************************!*\
+  !*** ./src/classes/Body.js ***!
+  \*****************************/
+
+/*!******************************!*\
+  !*** ./src/classes/Scene.js ***!
+  \******************************/
+
+/*!*******************************!*\
+  !*** ./src/classes/Screen.js ***!
+  \*******************************/
+
+/*!*********************************!*\
+  !*** ./src/classes/Particle.js ***!
+  \*********************************/
