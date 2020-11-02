@@ -36,17 +36,120 @@ ParticleShift.Sceen.create({
 </script>
 ```
 
-## Usage
+## Basic Example
 
-### Basic
+```html
+<script src="https://cdn.jsdelivr.net/gh/ihansson/particle-shift@main/dist/particle-shift.min.js"></script>
+<canvas id="canvas" width=500 height=300></canvas>
+<script>
+const scene = ParticleShift.Scene.create({
+	selector: '#canvas',
+	particle_size: 2,
+	step_width: 6,
+	draw_width: 500,
+	draw_height: 300
+})
 
-### With Body / Gradient ?
+const screen1 = ParticleShift.Screen.create(scene, {
+	render: function(scene, ctx){
+		ctx.font = '170px Georgia'
+		ctx.fillStyle = 'black';
+		ctx.fillText('Hello', 25, 200)
+	}
+})
+
+const screen2 = ParticleShift.Screen.create(scene, {
+	render: function(scene, ctx){
+		ctx.fillText('There', 25, 200)
+	}
+})
+
+scene.play_screen(screen1);
+
+window.setTimeout(function(){
+	scene.play_screen(screen2)
+},2000)
+</script>
+```
 
 ## Options
 
 ### Scene
 
+The scene is particle shift represents the canvas for the particle system and is used to controlled what is drawn and when. The most important properties of the scene are the particle_size and step_width which will control the level of detail of the particle system.
+
+#### Responsive
+
+The scene had a separate draw_width and draw_height from the actual width and heigh to allow for the canvas itself to be responsive. You should always sepcify a draw_width and draw_height and if you then want this to be responsive you can make the canvas responsive using css (100% width), or you can specify a different height and width in css to scale up to.
+
+#### Pre Render
+
+The pre_render_frames_count property can be set to create a sheet of all rendered frames if you have a scene which is too demanding to be rendered in real time. There is currently no option to directly output a gif or video so these would then need to be converted to your required format via another tool.
+
+#### Example
+
+```javascript
+const scene = ParticleShift.Scene.create({
+	selector: '#canvas',
+	particle_size: 2,
+	step_width: 6,
+	draw_width: 500,
+	draw_height: 300
+})
+```
+
+#### Settings
+
+| property                | type       | default | notes                                                                                      |
+|-------------------------|------------|---------|--------------------------------------------------------------------------------------------|
+| selector                | string     | n/a     | CSS Selector for a canvas element                                                          |
+| draw_width              | num        | n/a     | Draw width for the scene (will be scaled up/down to the size of the canvas when rendered)  |
+| draw_height             | num        | n/a     | Draw height for the scene                                                                  |
+| particle_size           | num        | 2       | Pixel size of each particle                                                                |
+| step_width              | num        | 6       | The distance to travel between sampling each pixel in a scene                              |
+| particle_type           | rect, circ | rect    | Whether to render each particle as a rect or circ                                          |
+| spawn_scatter           | num        | 250     | Random distance maximum from which a new particle will be spawned to the final destination |
+| shuffle_spawn           | bool       | true    | Whether particle positions will be shuffled between each scene.                            |
+| particle_speed          | num        | 1       | Base speed of particle                                                                     |
+| particle_speed_distance | num        | 0.05    | Distance multiplier to the speed of a particle                                             |
+| particle_wobble         | num        | 0.2     | Adds a sin() position modifier to make movement appear less linear                         |
+| color_shift_speed       | num        | 4       | Speed at which particles will change color                                                 |
+| show_fps                | bool       | false   | Enable the fps meter in the top left                                                       |
+| pre_render_frames_count | num, false | false   | If used will store each frame generated and output a canvas with each frame stacked.       |
+
+#### Scene Object
+
+| property    | type           | default | notes                                                                 |
+|-------------|----------------|---------|-----------------------------------------------------------------------|
+| play_screen | method(screen) | n/a     | Triggers the scene to animate particles to match the specified screen |
+
 ### Screen
+
+A particle shift screen represents a single drawn image on a canvas which can be used for the particles to transition from and to. Anything can be drawn to the screen through the standard canvas 2d context api.
+
+#### Example
+
+```javascript
+const screen1 = ParticleShift.Screen.create(scene, {
+	render: function(scene, ctx){
+		ctx.font = '170px Georgia'
+		ctx.fillStyle = 'black';
+		ctx.fillText('Hello', 25, 200)
+	}
+})
+```
+
+#### Settings
+
+| property | type             | default | notes                                                                                     |
+|----------|------------------|---------|-------------------------------------------------------------------------------------------|
+| bodies   | array(body)      | n/a     | An array of bodies to be considered for the screen                                        |
+| render   | func(scene, ctx) | n/a     | Called on setup to generate an image which can then be used to create the particle system |
+
+#### Screen Object
+
+| property | type             | default | notes                                                                                     |
+| debug    | method           | n/a     | Used on an instantiated screen object to output the rendered scene                        |
 
 ### Body
 
@@ -83,18 +186,3 @@ const example_body = ParticleShift.Body.create({
 ## Author
 
 [Ian Hansson](https://ianhan.com/)
-
-## v1
-
-- Go through method / prop names and make better
-- Versioning
-- Readme
-
-## v2
-
-- Deactivate inactive / remove invsible
-- Change particle data format to int arrays
-- Web workers?
-- Webgl?
-- Better recording
-- Better timing mechanism (framerate independent)
