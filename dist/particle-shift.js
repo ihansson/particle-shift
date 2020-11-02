@@ -184,8 +184,8 @@ var Scene = {
   resize: function resize() {
     var width = this.canvas.getBoundingClientRect().width;
     var height = Math.ceil(width * (this.draw_height / this.draw_width));
-    canvas.width = width;
-    canvas.height = height;
+    this.canvas.width = width;
+    this.canvas.height = height;
     this.width = width;
     this.height = height;
     this.draw_multiplier = width / this.draw_width;
@@ -399,12 +399,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _x$y = {
-  x: 2,
-  y: 3
-},
-    x = _x$y.x,
-    y = _x$y.y;
 
 
 /***/ }),
