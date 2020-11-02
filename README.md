@@ -78,7 +78,7 @@ window.setTimeout(function(){
 
 ### Scene
 
-The scene is particle shift represents the canvas for the particle system and is used to controlled what is drawn and when. The most important properties of the scene are the particle_size and step_width which will control the level of detail of the particle system.
+The scene in particle shift represents the canvas for the particle system and is used to controlled what is drawn and when. The most important properties of the scene are the particle_size and step_width which will control the level of detail of the particle system.
 
 #### Responsive
 

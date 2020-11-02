@@ -55,8 +55,8 @@ export var Scene = {
 
 		const width = this.canvas.getBoundingClientRect().width;
 		const height = Math.ceil(width * (this.draw_height / this.draw_width));
-		canvas.width = width
-		canvas.height = height
+		this.canvas.width = width
+		this.canvas.height = height
 
 		this.width = width
 		this.height = height
