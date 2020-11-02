@@ -2,7 +2,7 @@
 
 Particle shift is a library for creating animations with simple particle systems. Can be used to transition between any scene drawn onto a 2d canvas context, whether it be text, images, svgs, or just drawn shapes.
 
-![alt text](https://github.com/ihansson/particle-shift/blob/main/banner.gif?raw=true)
+![Particle Shift Banner](https://i.imgur.com/ir5i05I.gif)
 
 ## Demo
 
