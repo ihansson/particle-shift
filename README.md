@@ -6,7 +6,7 @@ Particle shift is a library for creating animations with simple particle systems
 
 ## Demo
 
-Under construction
+[Visit demo site](https://particle-shift.ianhan.com/)
 
 ## Install
 
@@ -30,7 +30,7 @@ Sceen.create({
 Alternatively the library can be included separately and accessed via the ParticleShift global.
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/ihansson/particle-shift@main/dist/particle-shift.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/ihansson/particle-shift@@1.0.2/dist/particle-shift.min.js"></script>
 <script>
 ParticleShift.Sceen.create({
 	...
@@ -41,7 +41,7 @@ ParticleShift.Sceen.create({
 ## Basic Example
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/ihansson/particle-shift@main/dist/particle-shift.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/ihansson/particle-shift@@1.0.2/dist/particle-shift.min.js"></script>
 <canvas id="canvas" width=500 height=300></canvas>
 <script>
 const scene = ParticleShift.Scene.create({
