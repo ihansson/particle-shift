@@ -15,7 +15,7 @@ Particle shift is a library for creating animations with simple particle systems
 Particle Shift can be included as a module through npm or yarn
 
 ```console
-npm install ihansson/particle-shift
+npm install particle-shift
 ```
 
 ```javascript
