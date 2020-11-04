@@ -1,7 +1,7 @@
 {
   "name": "particle-shift",
   "version": "1.0.2",
-  "description": "",
+  "description": "Particle shift is a library for creating animations with simple particle systems. Can be used to transition between any scene drawn onto a 2d canvas context, whether it be text, images, svgs, or just drawn shapes.",
   "main": "src/index.js",
   "scripts": {},
   "author": "",
@@ -14,9 +14,6 @@
     "terser-webpack-plugin": "^5.0.3",
     "webpack": "^5.3.2",
     "webpack-cli": "^4.1.0"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
   },
   "repository": "git://github.com/ihansson/particle-shift.git" 
 }
